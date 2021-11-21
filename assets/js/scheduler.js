@@ -41,8 +41,9 @@ function currentColor(timeLabel) {
     }
 
 }
-// sending localstorage values back to rows after refresh
+// sending localstorage values back to rows after refresh 
 var workEvent = JSON.parse(localStorage.getItem("workSchedule"));
+// if loop so this only runs when you have values in local storage
 if (workEvent) {
 for (var i=0; i<=10; i++){
     workDay = workEvent;
