@@ -41,6 +41,11 @@ function currentColor(timeLabel) {
     }
 
 }
+// sending localstorage values back to rows after refresh
+var workEvent = JSON.parse(localStorage.getItem("workSchedule"));
+for (var i=0; i<workDay.length; i++){
+    workDay = workEvent;
+}
 //create rows for each time slot
 
 workDay.forEach(function(workDay, index) {
@@ -64,14 +69,11 @@ $(".saveBtn").on("click", function(){
     
 });
 
-function getValue(){
-    var workEvents = JSON.parse(localStorage.getItem("workSchedule"));
-    workDay = workEvents;
 
-    console.log(workDay);
-}
+    
 
-getValue();
+
+
 
 
 
