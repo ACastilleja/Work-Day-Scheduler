@@ -30,8 +30,8 @@ console.log(workDay);
 
 //function for row color according to current time "present","past","future"
 function currentColor(timeLabel) {
-    var planNow = moment(current_time, "hh:mm a");
-    var planEntry = moment(timeLabel, "hh:mm a");
+    var planNow = moment(current_time, "hh a");
+    var planEntry = moment(timeLabel, "hh a");
     if (planNow.isBefore(planEntry) === true){
         return "future";
     }else if (planNow.isAfter(planEntry) === true) {
