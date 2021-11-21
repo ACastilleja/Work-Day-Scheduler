@@ -43,8 +43,10 @@ function currentColor(timeLabel) {
 }
 // sending localstorage values back to rows after refresh
 var workEvent = JSON.parse(localStorage.getItem("workSchedule"));
+if (workEvent) {
 for (var i=0; i<=10; i++){
     workDay = workEvent;
+}
 }
 //create rows for each time slot
 
