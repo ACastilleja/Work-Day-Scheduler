@@ -10,7 +10,7 @@ The objective was to create a Work Day Scheduler that with the help of JQuery an
             *Javascript
 
 ##                          Website 
-
+     https://acastilleja.github.io/Work-Day-Scheduler/
 
 ##                        Screeenshot
      https://watch.screencastify.com/v/WQ8MdJU2BAbwnI8jguaZ
