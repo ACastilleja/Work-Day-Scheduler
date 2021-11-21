@@ -25,6 +25,7 @@ var workDay = [
 ];
 console.log(workDay);
 
+//function for row color according to current time "present","past","future"
 function currentColor(timeLabel) {
     var planNow = moment(current_time, "hh:mm a");
     var planEntry = moment(timeLabel, "hh:mm a");
@@ -37,15 +38,14 @@ function currentColor(timeLabel) {
     }
 
 }
-//rows for time blocks
-
+//create rows for each time slot
 
 workDay.forEach(function(workDay, index) {
     var timeLabel = workDay.time;
     var colorTime = currentColor(timeLabel);
-    var row = '<div class="time-block" id=" ' + index + ' "><div class="row no-gutters input-group"><div class="col-sm col-lg-1 input-group-prepend hour jsutify-content-sm-end pr-3 pt-3">'+ timeLabel + '</div><textarea class"form-control '+ colorTime +'">' 
-    + workDay.event + '</textarea><div class="col-sm col-lg-1 input-group-append"><button class="saveBtn btn-block" type="submit"><i class="fas fa-save></i></button></div></div></div>';
-$(".container").append(row);
+    var row = '<div class="time-block" id=" ' + index + ' "><div class="row no-gutters input-group"><div class="col-sm col-lg-1 input-group-prepend hour jsutify-content-sm-end pr-3 pt-3">'+ timeLabel + '</div><textarea class="form-control '+colorTime+'">' + workDay.event + '</textarea><div class="col-sm col-lg-1 input-group-append"><button class="saveBtn btn-block" type="submit"><i class="fas fa-save"></i></button></div></div></div>';
+//add rows to html
+    $(".container").append(row);
 console.log(colorTime);
 });
 
