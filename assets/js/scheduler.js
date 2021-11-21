@@ -10,6 +10,8 @@ console.log(today);
 var current_time = moment().format("hh:mm a");
 console.log(current_time);
 
+
+
 //work day time blocks
 var workDay = [
     { time: "8 am", event:""},
@@ -24,6 +26,7 @@ var workDay = [
     { time: "5 pm", event:""},
 ];
 console.log(workDay);
+
 
 //function for row color according to current time "present","past","future"
 function currentColor(timeLabel) {
@@ -45,10 +48,30 @@ workDay.forEach(function(workDay, index) {
     var colorTime = currentColor(timeLabel);
     var row = '<div class="time-block" id=" ' + index + ' "><div class="row no-gutters input-group"><div class="col-sm col-lg-1 input-group-prepend hour jsutify-content-sm-end pr-3 pt-3">'+ timeLabel + '</div><textarea class="form-control '+colorTime+'">' + workDay.event + '</textarea><div class="col-sm col-lg-1 input-group-append"><button class="saveBtn btn-block" type="submit"><i class="fas fa-save"></i></button></div></div></div>';
 //add rows to html
-    $(".container").append(row);
+
+$(".container").append(row);
 console.log(colorTime);
 });
 
+
+
+//saving schedule to local storage
+$(".saveBtn").on("click", function(){
+    var timeBlock = parseInt($(this) .closest(".time-block") .attr("id"));
+    var textEntry = $.trim($(this) .parent() .siblings("textarea") .val());
+    workDay[timeBlock].event = textEntry;
+    localStorage.setItem("workSchedule", JSON.stringify(workDay));
+    
+});
+
+function getValue(){
+    var workEvents = JSON.parse(localStorage.getItem("workSchedule"));
+    workDay = workEvents;
+
+    console.log(workDay);
+}
+
+getValue();
 
 
 
