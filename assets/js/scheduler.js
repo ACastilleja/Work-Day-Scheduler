@@ -1,7 +1,7 @@
 
 //adding current date to Hero using Moment.js
 
-var today = moment().format('dddd, MMMM Do YYYY');
+var today = moment().format('dddd, MMMM Do YYYY, hh:mm a');
 
 $("#currentDay").text(today);
 console.log(today);
@@ -30,8 +30,8 @@ console.log(workDay);
 
 //function for row color according to current time "present","past","future"
 function currentColor(timeLabel) {
-    var planNow = moment(current_time, "hh:mm a");
-    var planEntry = moment(timeLabel, "hh:mm a");
+    var planNow = moment(current_time, "hh a");
+    var planEntry = moment(timeLabel, "hh a");
     if (planNow.isBefore(planEntry) === true){
         return "future";
     }else if (planNow.isAfter(planEntry) === true) {
@@ -40,6 +40,11 @@ function currentColor(timeLabel) {
         return "present";
     }
 
+}
+// sending localstorage values back to rows after refresh
+var workEvent = JSON.parse(localStorage.getItem("workSchedule"));
+for (var i=0; i<workDay.length; i++){
+    workDay = workEvent;
 }
 //create rows for each time slot
 
@@ -64,14 +69,11 @@ $(".saveBtn").on("click", function(){
     
 });
 
-function getValue(){
-    var workEvents = JSON.parse(localStorage.getItem("workSchedule"));
-    workDay = workEvents;
 
-    console.log(workDay);
-}
+    
 
-getValue();
+
+
 
 
 
